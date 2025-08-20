@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+      <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quiz Selector with Buttons</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f4f8;
+      color: #333;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    h2, h3 {
+      color: #2c3e50;
+    }
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin: 20px 0;
+      justify-content: center;
+      max-width: 600px;
+      width: 100%;
+    }
+    button {
+      background-color: #34495e;
+      color: #ecf0f1;
+      border: none;
+      border-radius: 6px;
+      padding: 15px 25px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      flex: 1 1 150px;
+      max-width: 180px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    button:hover {
+      background-color: #3f5874;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+    }
+    .quizTypeSection {
+      display: none;
+      width: 100%;
+      max-width: 700px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Select Subject</h2>
+  <div class="button-group" id="subjectButtons">
+    <button onclick="selectSubject('bible')">Bible</button>
+    <button onclick="selectSubject('physics')">Physics</button>
+    <button onclick="selectSubject('chemistry')">Chemistry</button>
+  </div>
+
+  <div id="quizTypeSection">
+    <h3>Select What You Want to Read</h3>
+    <div class="button-group" id="quizButtons"></div>
+  </div>
+
+<script>
+  const quizOptions = {
+    bible: [
+      { text: 'Scripture Zone', value: 'kk.html' }
+    ],
+    physics: [
+      { text: 'Elasticity', value: 'elaticnote.html' },
+      { text: 'Friction', value: 'frictionnote.html' },
+      { text: 'Machine', value: 'machinenote.html' },
+      { text: 'Work', value: 'energynote.html' },
+      { text: 'Scalars Quantity', value: 'scalarsnote.html' }
+    ],
+    chemistry: [
+      { text: 'Acid', value: 'acidnote.html' },
+      { text: 'Chlorine', value: 'chlorinenote.html' },
+      { text: 'Organic', value: 'organicnote.html' },
+      { text: 'Periodic', value: 'periodicnote.html' },
+      { text: 'Hydrogen', value: 'hydrogennote.html' },
+      { text: 'Sulphur', value: 'sulphurnote.html' }
+    ]
+  };
+
+  function selectSubject(subject) {
+    const quizButtonsDiv = document.getElementById('quizButtons');
+    quizButtonsDiv.innerHTML = ''; // Clear previous buttons
+
+    if (quizOptions[subject]) {
+      quizOptions[subject].forEach(quiz => {
+        const btn = document.createElement('button');
+        btn.textContent = quiz.text;
+        btn.onclick = () => {
+          window.location.href = quiz.value;
+        };
+        quizButtonsDiv.appendChild(btn);
+      });
+      document.getElementById('quizTypeSection').style.display = 'block';
+    }
+  }
+</script>
+
+</body>
+</html>

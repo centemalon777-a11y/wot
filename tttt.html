@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Select Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .quiz-selection {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      width: 300px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+
+    select, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background-color: #003366;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<h3>Select a Physics Quiz</h3>
+<form id="quizForm">
+  <label><input type="radio" name="physicsQuiz" value="elasticity.html"> Elasticity</label><br>
+  <label><input type="radio" name="physicsQuiz" value="friction.html"> Friction</label><br>
+  <label><input type="radio" name="physicsQuiz" value="machine.html"> Machine</label><br>
+  <label><input type="radio" name="physicsQuiz" value="work.html"> Work</label><br>
+  <label><input type="radio" name="physicsQuiz" value="quiz.html"> Scalars Quantity</label><br><br>
+  <button type="button" onclick="startPhysicsQuiz()">Start Quiz</button>
+</form>
+
+<script>
+  function startPhysicsQuiz() {
+    const radios = document.getElementsByName('physicsQuiz');
+    let selectedQuiz = '';
+    radios.forEach(radio => {
+      if (radio.checked) {
+        selectedQuiz = radio.value;
+      }
+    });
+
+    if (selectedQuiz) {
+      window.location.href = selectedQuiz;
+    } else {
+      alert('Please select a quiz.');
+    }
+  }
+</script>
+
+</html>
+</body>
